@@ -7,6 +7,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch week-1",
+      "program": "${workspaceFolder}/week-1/homework.js",
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.12.0/bin/node"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch week-2",
+      "program": "${workspaceFolder}/week-2/index.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch week-3-2",
       "program": "${workspaceFolder}/week-3-2/index.js"
     },
