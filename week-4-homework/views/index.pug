@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1 Enter a transaction!
+  form
+    label(for="transaction") Amount
+    input(
+      id="transaction"
+      type="text"
+      name="transaction"
+    )
+    select(
+      id="category"
+      type="text"
+      name="transaction"
+    )
+      each category in ['category1', 'category2']
+        option=category
+    button(
+      type="submit"
+      value="submit-true"
+      name="submit"
+    ) Save
+
+    transactions
