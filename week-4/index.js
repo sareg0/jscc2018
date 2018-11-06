@@ -1,7 +1,7 @@
 const express = require('express')
-const bodyParser = require('body-parser')
-
 const PersonService = require('./services/person-service')
+const pug = require('pug')
+const bodyParser = require('body-parser')
 
 const app = express()
 
@@ -14,24 +14,25 @@ app.get('/', (req, res) => {
 
 app.get('/person/all', async (req, res) => {
   const people = await PersonService.findAll()
-  res.render('person', { people })
+  res.render('index', {people: people})
 })
 
 app.get('/person/:id', async (req, res) => {
-  const user = await PersonService.find(req.params.id)
-  res.send(user)
+  res.send(await PersonService.find(req.params.id))
 })
 
 app.post('/person', async (req, res) => {
+  console.log(req.body)
   const user = await PersonService.add(req.body)
   res.send(user)
+
 })
 
 app.delete('/person/:id', async (req, res) => {
-  const user = await PersonService.del(req.params.id)
-  res.send(user)
+  await PersonService.del(req.params.id)
+  res.send('ok')
 })
 
 app.listen(3000, () => {
-  console.log('Server listening')
+  console.log('Server Listening')
 })

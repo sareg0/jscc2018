@@ -1,4 +1,6 @@
 extends layout
 
 block content
-    h1 Hello!
+    h1 The number of people we have is #{people.length}
+    each person in people
+        p #{person.name}

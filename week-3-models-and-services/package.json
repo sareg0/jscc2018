@@ -9,6 +9,7 @@
   "author": "Armagan Amcalar <armagan@amcalar.com>",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.4.1"
+    "chalk": "^2.4.1",
+    "express": "^4.16.4"
   }
 }
