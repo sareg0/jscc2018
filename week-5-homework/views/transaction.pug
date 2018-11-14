@@ -1,0 +1,6 @@
+extends layout
+
+block content
+    h1 The number of transactions is #{transactions.length}
+    each transaction in transactions
+      pre #{JSON.stringify(transaction, null, 4)}
