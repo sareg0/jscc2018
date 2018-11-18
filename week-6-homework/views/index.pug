@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  h1 Enter a transaction!
+  form(
+    method="POST"
+    action="/transaction"
+  )
+    label(for="transaction") Amount
+    input(
+      id="amount"
+      type="text"
+      name="amount"
+    )
+    select(
+      id="owner"
+      type="text"
+      name="owner"
+    )
+      each owner in ['person1', 'person2']
+        option=owner
+    select(
+      id="category"
+      type="text"
+      name="category"
+    )
+      each category in ['category1', 'category2']
+        option=category
+    button(
+      type="submit"
+      value="submit-true"
+      name="submit"
+    ) Save
+
+  h2 Overview
+  a(href="/transaction/all") "Show me all my transactions"
+
+  //- show their transactions and budgets at a glance on the index page, for a group
+  //- see how much a purchase will put me over my budget
+  //- one would be logged in as a person (not select it from a list)
+  //- the owner should be an instance of the Person model
