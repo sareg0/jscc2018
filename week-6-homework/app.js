@@ -14,38 +14,11 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+// Person Endpoints
+
 app.get('/person/all', async (req, res) => {
-    const people = await PersonService.findAll()
-    res.send(people)
-})
-
-app.post('/transaction', async (req, res) => {
-  try {
-    console.log('tried it!')
-    await TransactionService.add(req.body)
-    res.redirect('/transaction/:id')
-  } catch (e) {
-    console.log(e.message)
-    res.send(e.message)
-  }
-})
-
-app.get('/transaction/all', async (req, res) => {
-  try {
-    const transactions = await TransactionService.findAll()
-    res.render('transaction', { transactions })
-  } catch (e) {
-    res.render(e.message)
-  }
-})
-
-app.get('/transaction/:id', async (req, res) => {
-  try {
-    const transaction = await TransactionService.find(req.params.id)
-    res.send(transaction)
-  } catch (e) {
-    res.render(e.message)
-  }
+  const people = await PersonService.findAll()
+  res.send(people)
 })
 
 app.post('/person', async (req, res) => {
@@ -53,8 +26,23 @@ app.post('/person', async (req, res) => {
   res.send(person)
 })
 
-app.post('/', async (req, res) => {
-  console.log(req.body)
+// Transaction Endpoints
+
+app.get('/transaction/all', async (req, res) => {
+  const transactions = await TransactionService.findAll()
+  res.send(transactions)
+})
+
+// app.get('/transaction/:id', async (req, res) => {
+//   try {
+//     const transaction = await TransactionService.find(req.params.id)
+//     res.send(transaction)
+//   } catch (e) {
+//     res.render(e.message)
+//   }
+// })
+
+app.post('/transaction', async (req, res) => {
   const transaction = await TransactionService.add(req.body)
   res.send(transaction)
 })

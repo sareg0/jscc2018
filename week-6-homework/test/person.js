@@ -3,7 +3,7 @@ import app from '../app'
 import request from 'supertest'
 
 
-test('Get all people back', async t => {
+test('Get a list of people', async t => {
   const personToCreate = { name: "Bleep Bloop" }
 
   const person = await request(app)
@@ -17,11 +17,13 @@ test('Get all people back', async t => {
   t.true(res.body.length > 0)
 })
 
-// test('foo', t => {
-//   t.pass();
-// });
+test('Create a new person', async t => {
+  const person1 = { name: 'Smithy Smitherson' }
 
-// test('bar', async t => {
-//   const bar = Promise.resolve('bar');
-//   t.is(await bar, 'bar')
-// });
+  const res = await request(app)
+    .post('/person')
+    .send(person1)
+
+  t.is(res.status, 200)
+  t.is(res.body.name, person1.name)
+})
