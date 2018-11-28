@@ -8,4 +8,5 @@ export default {
   .home
     img(alt="Vue logo" src="../assets/logo.png")
     h1 Welcome to Your Vue.js App
+    p woah!
 </template>
