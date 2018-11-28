@@ -11,7 +11,7 @@ const state = {
 };
 
 const mutations = {
-  [REQUEST_SUCCESS] (state, data) {
+  [REQUEST_SUCCESS](state, data) {
     state.data = data;
   },
   [ADD_LIKES](state) {
@@ -24,11 +24,11 @@ const mutations = {
 
 const actions = {
   async fetchMeetups({ commit }) {
-    const res = await axios.get('http://localhost:3000/meetup/all');
+    const res = await axios.get('http://backend.docker.localhost/meetup/all');
     commit(REQUEST_SUCCESS, res.data);
   },
   async fetchMeetup({ commit }, id) {
-    const res = await axios.get(`http://localhost:3000/meetup/${id}/json`);
+    const res = await axios.get(`http://backend.docker.localhost/meetup/${id}/json`);
     commit(REQUEST_METUP_SUCCESS, res.data)
   },
   addLikes({ commit }) {
